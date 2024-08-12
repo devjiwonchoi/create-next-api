@@ -1,5 +1,3 @@
-import { NextResponse } from 'next/server'
-
 export async function GET() {
-  return NextResponse.json('Not Found', { status: 404 })
+  return new Response('Not Found', { status: 404 });
 }
