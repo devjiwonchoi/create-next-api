@@ -56,6 +56,5 @@ export async function OPTIONS() {
 }
 
 export async function HEAD() {
-  throw new Error('Not implemented');
   return new Response(null, { status: 200 });
 }
