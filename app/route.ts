@@ -13,5 +13,11 @@ export async function GET(request: NextRequest) {
     return { path: url + path, description };
   });
 
-  return NextResponse.json(apis);
+  return NextResponse.json(apis, {
+    headers: {
+      // CORS: https://nextjs.org/docs/app/building-your-application/routing/route-handlers#cors
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET',
+    },
+  });
 }
