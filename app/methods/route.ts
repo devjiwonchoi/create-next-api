@@ -1,14 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server';
-
-export const methods = [
-  'GET',
-  'POST',
-  'PUT',
-  'DELETE',
-  'PATCH',
-  'OPTIONS',
-  'HEAD',
-];
+import { methods } from './methods';
 
 export async function GET(request: NextRequest) {
   const url = request.nextUrl.toString();
