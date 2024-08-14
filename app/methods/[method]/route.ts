@@ -1,5 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server';
-import { methods } from '../route';
+import { methods } from '../methods';
 
 export async function GET(
   request: NextRequest,
