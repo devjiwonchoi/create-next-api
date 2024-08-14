@@ -1,20 +1,51 @@
-import { type NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server';
+import { withMiddleware } from '../with-middleware';
 
-export async function GET(request: NextRequest) {
-  const url = request.nextUrl.toString()
+export const GET = withMiddleware(async (request) => {
+  const url = request.nextUrl.toString();
 
-  const { searchParams } = request.nextUrl
-  const type = searchParams.get('type')
+  const { searchParams } = request.nextUrl;
+  const type = searchParams.get('type');
 
-  const res = await fetch(`https://api.vercel.app/pokemon?type=${type}`)
-  const data = await res.json()
+  if (type && !POKEMON_TYPES.includes(type)) {
+    return NextResponse.json(
+      { error: `Invalid type: '${type}'`, types: POKEMON_TYPES },
+      { status: 400 }
+    );
+  }
+
+  const res = await fetch(
+    `https://api.vercel.app/pokemon${type ? `?type=${type}` : ''}`
+  );
+  const data = await res.json();
 
   const pokedex = data.map((pokemon: { id: string }) => {
     return {
       ...pokemon,
       url: `${url}/${pokemon.id}`,
-    }
-  })
+    };
+  });
 
-  return NextResponse.json(pokedex)
-}
+  return NextResponse.json(pokedex);
+});
+
+const POKEMON_TYPES = [
+  'normal',
+  'fire',
+  'water',
+  'electric',
+  'grass',
+  'ice',
+  'fighting',
+  'poison',
+  'ground',
+  'flying',
+  'psychic',
+  'bug',
+  'rock',
+  'ghost',
+  'dragon',
+  'dark',
+  'steel',
+  'fairy',
+];
