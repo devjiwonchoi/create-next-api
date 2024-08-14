@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { methods } from '../methods';
 
 export async function GET(
@@ -19,6 +19,18 @@ export async function GET(
 
   const url = request.nextUrl.toString();
   const res = await fetch(url, { method });
+
+  // if method is HEAD, body is null
+  if (method === 'HEAD') {
+    const { ok, statusText, status, body } = res;
+    return NextResponse.json({
+      ok,
+      statusText,
+      status,
+      body,
+    });
+  }
+
   const data = await res.json();
   return NextResponse.json(data);
 }
@@ -44,5 +56,5 @@ export async function OPTIONS() {
 }
 
 export async function HEAD() {
-  return NextResponse.json({ method: 'HEAD' });
+  return new Response(null, { status: 200 });
 }
