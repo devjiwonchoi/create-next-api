@@ -1,0 +1,20 @@
+import { type NextRequest, NextResponse } from 'next/server';
+
+export const methods = [
+  'GET',
+  'POST',
+  'PUT',
+  'DELETE',
+  'PATCH',
+  'OPTIONS',
+  'HEAD',
+];
+
+export async function GET(request: NextRequest) {
+  const url = request.nextUrl.toString();
+  const apis = methods.map((method) => {
+    return { path: `${url}/${method}`, description: `${method} method` };
+  });
+
+  return NextResponse.json(apis);
+}
