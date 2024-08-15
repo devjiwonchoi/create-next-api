@@ -8,12 +8,6 @@ dependencies:
   next:
     specifier: canary
     version: 15.0.0-canary.115(react-dom@19.0.0-rc-187dd6a7-20240806)(react@19.0.0-rc-187dd6a7-20240806)
-  react:
-    specifier: 19.0.0-rc-187dd6a7-20240806
-    version: 19.0.0-rc-187dd6a7-20240806
-  react-dom:
-    specifier: 19.0.0-rc-187dd6a7-20240806
-    version: 19.0.0-rc-187dd6a7-20240806(react@19.0.0-rc-187dd6a7-20240806)
 
 devDependencies:
   '@types/node':
