@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { withMiddleware } from '../with-middleware';
+import { withMiddleware } from '@/app/with-middleware';
 
 export const GET = withMiddleware(async (request) => {
   const url = request.nextUrl.toString();

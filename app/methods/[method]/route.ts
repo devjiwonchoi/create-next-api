@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { methods } from '../methods';
-import { withMiddleware } from '../../with-middleware';
+import { withMiddleware } from '@/app/with-middleware';
 
 export const GET = withMiddleware(
   async (request, context: { params: { method: string } }) => {
