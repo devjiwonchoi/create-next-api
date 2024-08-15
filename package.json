@@ -6,9 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "canary",
-    "react": "19.0.0-rc-187dd6a7-20240806",
-    "react-dom": "19.0.0-rc-187dd6a7-20240806"
+    "next": "canary"
   },
   "devDependencies": {
     "@types/node": "20.14.11",
