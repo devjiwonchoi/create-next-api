@@ -5,7 +5,7 @@ type RouteHandler<T = Record<string, string | string[]>> = (
   ctx: { params: T }
 ) => Promise<Response> | Response;
 
-export function withMiddleware<T = Record<string, string | string[]>>(
+export function requestHandler<T = Record<string, string | string[]>>(
   handler: RouteHandler<T>
 ): RouteHandler<T> {
   return async (req: NextRequest, ctx: { params: T }) => {
