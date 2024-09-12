@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import { withMiddleware } from '@/app/with-middleware';
+import { requestHandler } from '@/app/request-handler';
 
-export const GET = withMiddleware(async (request) => {
+export const GET = requestHandler(async (request) => {
   const url = request.nextUrl.toString();
 
   const { searchParams } = request.nextUrl;
